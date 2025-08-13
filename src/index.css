@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
 
@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 230 12% 13%;
 
-    --primary: 250 84% 54%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 240 5% 96%;
@@ -34,53 +34,17 @@ All colors MUST be HSL.
 
     --border: 240 6% 90%;
     --input: 240 6% 90%;
-    --ring: 250 84% 54%;
-
-    /* Luxurious Ticket System Colors */
-    --ticket-premium: 45 90% 60%;
-    --ticket-premium-foreground: 25 20% 15%;
-    --ticket-luxury: 280 100% 20%;
-    --ticket-luxury-foreground: 45 100% 95%;
-    --ticket-rose-gold: 15 45% 75%;
-    --ticket-platinum: 240 15% 85%;
-    
-    /* Enhanced Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(250 84% 54%), hsl(270 95% 75%), hsl(280 100% 70%));
-    --gradient-premium: linear-gradient(135deg, hsl(45 90% 60%), hsl(35 85% 55%), hsl(25 95% 50%));
-    --gradient-concert: linear-gradient(135deg, hsl(280 100% 70%), hsl(300 95% 65%), hsl(320 100% 60%));
-    --gradient-elegant: linear-gradient(135deg, hsl(230 35% 25%), hsl(240 25% 15%), hsl(250 35% 20%));
-    --gradient-luxury: linear-gradient(135deg, hsl(280 100% 20%), hsl(270 85% 25%), hsl(260 90% 30%));
-    --gradient-rose-gold: linear-gradient(135deg, hsl(15 45% 75%), hsl(25 55% 70%), hsl(35 65% 65%));
-    --gradient-platinum: linear-gradient(135deg, hsl(240 15% 85%), hsl(230 20% 80%), hsl(220 25% 75%));
-    
-    /* Modern Ticket Backgrounds */
-    --ticket-classic: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 15% 98%));
-    --ticket-modern: linear-gradient(145deg, hsl(240 6% 97%), hsl(250 10% 95%));
-    --ticket-concert: linear-gradient(145deg, hsl(280 20% 8%), hsl(270 25% 12%));
-    
-    /* Luxurious Shadows */
-    --shadow-ticket: 0 20px 40px hsl(250 84% 54% / 0.15);
-    --shadow-premium: 0 25px 50px hsl(45 90% 60% / 0.2);
-    --shadow-glow: 0 0 40px hsl(270 95% 75% / 0.4);
-    --shadow-luxury: 0 30px 60px hsl(280 100% 20% / 0.25);
-    --shadow-rose-gold: 0 20px 40px hsl(15 45% 75% / 0.3);
+    --ring: 217 91% 60%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -130,5 +94,70 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  /* RGB Slider Styling */
+  input[type="range"].slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  input[type="range"].slider::-webkit-slider-track {
+    background: #e5e7eb;
+    height: 8px;
+    border-radius: 4px;
+  }
+
+  input[type="range"].slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #3b82f6;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+
+  input[type="range"].slider::-webkit-slider-thumb:hover {
+    background: #2563eb;
+    transform: scale(1.1);
+  }
+
+  input[type="range"].slider::-moz-range-track {
+    background: #e5e7eb;
+    height: 8px;
+    border-radius: 4px;
+    border: none;
+  }
+
+  input[type="range"].slider::-moz-range-thumb {
+    background: #3b82f6;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  input[type="range"].slider::-moz-range-thumb:hover {
+    background: #2563eb;
+    transform: scale(1.1);
   }
 }
