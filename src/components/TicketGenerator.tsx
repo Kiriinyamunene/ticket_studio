@@ -16,6 +16,7 @@ export interface EventData {
   price: string;
   category: "concert" | "sports" | "theater" | "conference" | "other";
   additionalNotes: string;
+  eventImage: string | null;
 }
 
 export interface TicketDesign {
@@ -27,22 +28,28 @@ export interface TicketDesign {
 
 const ticketDesigns: TicketDesign[] = [
   {
-    id: "classic",
-    name: "Classic Elegant",
-    description: "Clean white background with elegant typography",
-    className: "bg-ticket-classic border-2 border-gray-200 text-foreground"
+    id: "luxury",
+    name: "Luxury Premium",
+    description: "Ultra-luxurious design with gold accents and premium styling",
+    className: "bg-gradient-luxury text-white border border-ticket-rose-gold/30 shadow-luxury"
   },
   {
-    id: "modern",
-    name: "Modern Minimal", 
-    description: "Contemporary flat design with bold typography",
-    className: "bg-ticket-modern border border-border text-foreground"
+    id: "rose-gold",
+    name: "Rose Gold Elite",
+    description: "Sophisticated rose gold theme with elegant details",
+    className: "bg-gradient-rose-gold text-ticket-luxury border border-ticket-luxury/20 shadow-rose-gold"
+  },
+  {
+    id: "platinum",
+    name: "Platinum Prestige",
+    description: "Premium platinum design for high-end events",
+    className: "bg-gradient-platinum text-ticket-luxury border border-ticket-luxury/30 shadow-premium"
   },
   {
     id: "concert",
     name: "Vibrant Concert",
     description: "Dynamic gradients perfect for music events",
-    className: "bg-gradient-concert text-white border-none"
+    className: "bg-gradient-concert text-white border border-white/20 shadow-glow"
   }
 ];
 
@@ -57,7 +64,8 @@ export const TicketGenerator = () => {
     seatNumber: "",
     price: "",
     category: "concert",
-    additionalNotes: ""
+    additionalNotes: "",
+    eventImage: null
   });
   
   const [selectedDesign, setSelectedDesign] = useState<TicketDesign>(ticketDesigns[0]);

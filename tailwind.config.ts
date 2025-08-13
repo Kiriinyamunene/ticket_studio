@@ -56,9 +56,15 @@ export default {
 					DEFAULT: 'hsl(var(--ticket-premium))',
 					foreground: 'hsl(var(--ticket-premium-foreground))'
 				},
-				'ticket-classic': 'hsl(var(--ticket-classic))',
-				'ticket-modern': 'hsl(var(--ticket-modern))',
-				'ticket-concert': 'hsl(var(--ticket-concert))',
+				'ticket-luxury': {
+					DEFAULT: 'hsl(var(--ticket-luxury))',
+					foreground: 'hsl(var(--ticket-luxury-foreground))'
+				},
+				'ticket-rose-gold': 'hsl(var(--ticket-rose-gold))',
+				'ticket-platinum': 'hsl(var(--ticket-platinum))',
+				'ticket-classic': 'var(--ticket-classic)',
+				'ticket-modern': 'var(--ticket-modern)',
+				'ticket-concert': 'var(--ticket-concert)',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -75,11 +81,21 @@ export default {
 				'gradient-premium': 'var(--gradient-premium)',
 				'gradient-concert': 'var(--gradient-concert)',
 				'gradient-elegant': 'var(--gradient-elegant)',
+				'gradient-luxury': 'var(--gradient-luxury)',
+				'gradient-rose-gold': 'var(--gradient-rose-gold)',
+				'gradient-platinum': 'var(--gradient-platinum)',
 			},
 			boxShadow: {
 				'ticket': 'var(--shadow-ticket)',
 				'premium': 'var(--shadow-premium)',
 				'glow': 'var(--shadow-glow)',
+				'luxury': 'var(--shadow-luxury)',
+				'rose-gold': 'var(--shadow-rose-gold)',
+			},
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+				'inter': ['Inter', 'sans-serif'],
+				'cormorant': ['Cormorant Garamond', 'serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

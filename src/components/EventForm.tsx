@@ -3,6 +3,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { EventData } from "./TicketGenerator";
+import { Upload, X, Image as ImageIcon } from "lucide-react";
+import { useState } from "react";
 
 interface EventFormProps {
   eventData: EventData;
@@ -10,6 +12,33 @@ interface EventFormProps {
 }
 
 export const EventForm = ({ eventData, onInputChange }: EventFormProps) => {
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleImageUpload = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const result = e.target?.result as string;
+      onInputChange("eventImage", result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragActive(false);
+    const files = e.dataTransfer.files;
+    if (files && files[0] && files[0].type.startsWith('image/')) {
+      handleImageUpload(files[0]);
+    }
+  };
+
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files[0]) {
+      handleImageUpload(files[0]);
+    }
+  };
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -121,6 +150,57 @@ export const EventForm = ({ eventData, onInputChange }: EventFormProps) => {
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+      </div>
+
+      {/* Event Image Upload */}
+      <div className="space-y-2">
+        <Label htmlFor="eventImage">Event Image</Label>
+        <div 
+          className={`
+            relative border-2 border-dashed rounded-lg p-6 transition-all duration-200
+            ${dragActive ? 'border-primary bg-primary/5' : 'border-muted-foreground/25 hover:border-primary/50'}
+            ${eventData.eventImage ? 'border-primary/50' : ''}
+          `}
+          onDragEnter={(e) => { e.preventDefault(); setDragActive(true); }}
+          onDragLeave={(e) => { e.preventDefault(); setDragActive(false); }}
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={handleDrop}
+        >
+          {eventData.eventImage ? (
+            <div className="relative">
+              <img 
+                src={eventData.eventImage} 
+                alt="Event preview" 
+                className="w-full h-32 object-cover rounded-md"
+              />
+              <button
+                onClick={() => onInputChange("eventImage", null)}
+                className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground rounded-full p-1 shadow-md hover:shadow-lg transition-all"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <div className="text-center">
+              <div className="flex justify-center mb-2">
+                {dragActive ? (
+                  <Upload className="w-8 h-8 text-primary animate-bounce" />
+                ) : (
+                  <ImageIcon className="w-8 h-8 text-muted-foreground" />
+                )}
+              </div>
+              <p className="text-sm text-muted-foreground mb-2">
+                {dragActive ? "Drop your image here" : "Drag & drop an image or click to browse"}
+              </p>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileInput}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              />
+            </div>
+          )}
         </div>
       </div>
 
