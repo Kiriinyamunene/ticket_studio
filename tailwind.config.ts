@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'ticket-premium': {
+					DEFAULT: 'hsl(var(--ticket-premium))',
+					foreground: 'hsl(var(--ticket-premium-foreground))'
+				},
+				'ticket-classic': 'hsl(var(--ticket-classic))',
+				'ticket-modern': 'hsl(var(--ticket-modern))',
+				'ticket-concert': 'hsl(var(--ticket-concert))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +69,17 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-premium': 'var(--gradient-premium)',
+				'gradient-concert': 'var(--gradient-concert)',
+				'gradient-elegant': 'var(--gradient-elegant)',
+			},
+			boxShadow: {
+				'ticket': 'var(--shadow-ticket)',
+				'premium': 'var(--shadow-premium)',
+				'glow': 'var(--shadow-glow)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
