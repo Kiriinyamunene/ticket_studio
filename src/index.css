@@ -2,133 +2,404 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
-@layer base {
-  :root {
-    --background: 0 0% 98%;
-    --foreground: 230 12% 13%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 230 12% 13%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 230 12% 13%;
-
-    --primary: 250 84% 54%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 230 12% 13%;
-
-    --muted: 240 5% 96%;
-    --muted-foreground: 230 6% 44%;
-
-    --accent: 270 95% 75%;
-    --accent-foreground: 230 12% 13%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 250 84% 54%;
-
-    /* Luxurious Ticket System Colors */
-    --ticket-premium: 45 90% 60%;
-    --ticket-premium-foreground: 25 20% 15%;
-    --ticket-luxury: 280 100% 20%;
-    --ticket-luxury-foreground: 45 100% 95%;
-    --ticket-rose-gold: 15 45% 75%;
-    --ticket-platinum: 240 15% 85%;
-    
-    /* Enhanced Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(250 84% 54%), hsl(270 95% 75%), hsl(280 100% 70%));
-    --gradient-premium: linear-gradient(135deg, hsl(45 90% 60%), hsl(35 85% 55%), hsl(25 95% 50%));
-    --gradient-concert: linear-gradient(135deg, hsl(280 100% 70%), hsl(300 95% 65%), hsl(320 100% 60%));
-    --gradient-elegant: linear-gradient(135deg, hsl(230 35% 25%), hsl(240 25% 15%), hsl(250 35% 20%));
-    --gradient-luxury: linear-gradient(135deg, hsl(280 100% 20%), hsl(270 85% 25%), hsl(260 90% 30%));
-    --gradient-rose-gold: linear-gradient(135deg, hsl(15 45% 75%), hsl(25 55% 70%), hsl(35 65% 65%));
-    --gradient-platinum: linear-gradient(135deg, hsl(240 15% 85%), hsl(230 20% 80%), hsl(220 25% 75%));
-    
-    /* Modern Ticket Backgrounds */
-    --ticket-classic: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 15% 98%));
-    --ticket-modern: linear-gradient(145deg, hsl(240 6% 97%), hsl(250 10% 95%));
-    --ticket-concert: linear-gradient(145deg, hsl(280 20% 8%), hsl(270 25% 12%));
-    
-    /* Luxurious Shadows */
-    --shadow-ticket: 0 20px 40px hsl(250 84% 54% / 0.15);
-    --shadow-premium: 0 25px 50px hsl(45 90% 60% / 0.2);
-    --shadow-glow: 0 0 40px hsl(270 95% 75% / 0.4);
-    --shadow-luxury: 0 30px 60px hsl(280 100% 20% / 0.25);
-    --shadow-rose-gold: 0 20px 40px hsl(15 45% 75% / 0.3);
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+/* TicketMaster Clone Styles */
+html, body {
+    touch-action: manipulation;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    margin: 0;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    position: relative;
+    padding-bottom: 70px; /* Space for bottom nav */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 90px; /* Extra padding for bottom nav */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* Adjust for status bar */
+    padding-top: calc(15px + env(safe-area-inset-top));
+}
+
+.page-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 100px;
+}
+
+.back-button {
+    color: #1a52ed;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clear-placeholder-container {
+    text-align: right;
+    max-width: 200px;
+}
+
+.clear-placeholder-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.clear-placeholder-desc {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #1a52ed;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="file"] {
+    padding: 8px;
+}
+
+input[type="color"] {
+    height: 40px;
+}
+
+.countdown-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.countdown-inputs input {
+    flex: 1;
+}
+
+.preview-image {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #1a52ed;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #1545cc;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    display: flex;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #666;
+    font-size: 12px;
+}
+
+.nav-item.active {
+    color: #1a52ed;
+}
+
+.nav-item svg {
+    margin-bottom: 5px;
+}
+
+.success-message {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+    text-align: center;
+}
+
+/* Live preview styles */
+.preview-section {
+    background-color: #1a52ed;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.preview-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.ticket-preview {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.ticket-header {
+    background-color: #1a52ed;
+    color: white;
+    padding: 20px 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ticket-type-label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.seat-info-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+.seat-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.seat-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* For General Admission layout */
+.general-admission-layout {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.general-admission-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticket-section-info {
+    display: flex;
+    padding: 15px;
+    color: #333;
+}
+
+.section-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.ticket-type {
+    flex-grow: 1;
+    text-align: right;
+    font-weight: bold;
+}
+
+.ticket-image-preview {
+    width: 100%;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.ticket-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 15px;
+}
+
+.event-title-preview {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.event-details-preview {
+    font-size: 12px;
+}
+
+.countdown-preview {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    color: #333;
+}
+
+.countdown-unit {
+    text-align: center;
+}
+
+.countdown-value {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.countdown-label {
+    font-size: 10px;
+    color: #666;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 40% auto;
+    padding: 25px;
+    width: 80%;
+    max-width: 350px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #1a52ed;
+}
+
+.modal-message {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.modal-button {
+    background-color: #1a52ed;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.modal-button:hover {
+    background-color: #0d44d6;
+}
+
+html {
+  touch-action: manipulation;
+  overflow-y: auto !important;
+  position: relative !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overscroll-behavior-y: contain;
+  min-height: 100vh;
 }
