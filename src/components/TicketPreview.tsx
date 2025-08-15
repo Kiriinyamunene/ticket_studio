@@ -98,7 +98,7 @@ export const TicketPreview = ({ eventData, design }: TicketPreviewProps) => {
                 ? 'bg-white/20 text-white border border-white/30' 
                 : 'bg-primary text-primary-foreground'
           }`}>
-            {eventData.category.toUpperCase()}
+            {eventData.ticketType.toUpperCase()}
           </div>
         </div>
 

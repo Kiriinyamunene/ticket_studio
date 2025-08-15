@@ -137,20 +137,32 @@ export const EventForm = ({ eventData, onInputChange }: EventFormProps) => {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="category">Category</Label>
-          <Select value={eventData.category} onValueChange={(value) => onInputChange("category", value)}>
+          <Label htmlFor="ticketType">Ticket Type</Label>
+          <Select value={eventData.ticketType} onValueChange={(value) => onInputChange("ticketType", value)}>
             <SelectTrigger className="transition-all duration-200 focus:shadow-glow">
-              <SelectValue placeholder="Select category" />
+              <SelectValue placeholder="Select ticket type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="concert">Concert</SelectItem>
-              <SelectItem value="sports">Sports</SelectItem>
-              <SelectItem value="theater">Theater</SelectItem>
-              <SelectItem value="conference">Conference</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
+              <SelectItem value="American Express® Presale">American Express® Presale</SelectItem>
+              <SelectItem value="Verified Fan Presale">Verified Fan Presale</SelectItem>
+              <SelectItem value="General Sale">General Sale</SelectItem>
+              <SelectItem value="VIP Package">VIP Package</SelectItem>
+              <SelectItem value="Custom">Custom</SelectItem>
             </SelectContent>
           </Select>
         </div>
+        {eventData.ticketType === "Custom" && (
+          <div className="space-y-2">
+            <Label htmlFor="customTicketType">Custom Ticket Type</Label>
+            <Input
+              id="customTicketType"
+              placeholder="Enter your custom ticket type"
+              value={eventData.customTicketType || ""}
+              onChange={(e) => onInputChange("customTicketType", e.target.value)}
+              className="transition-all duration-200 focus:shadow-glow"
+            />
+          </div>
+        )}
       </div>
 
       {/* Event Image Upload */}

@@ -14,7 +14,8 @@ export interface EventData {
   seatRow: string;
   seatNumber: string;
   price: string;
-  category: "concert" | "sports" | "theater" | "conference" | "other";
+  ticketType: string;
+  customTicketType?: string;
   additionalNotes: string;
   eventImage: string | null;
 }
@@ -63,7 +64,8 @@ export const TicketGenerator = () => {
     seatRow: "",
     seatNumber: "",
     price: "",
-    category: "concert",
+    ticketType: "American Express® Presale",
+    customTicketType: "",
     additionalNotes: "",
     eventImage: null
   });

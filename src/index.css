@@ -162,34 +162,7 @@ input[type="color"] {
     background-color: #1545cc;
 }
 
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    display: flex;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
 
-.nav-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    text-decoration: none;
-    color: #666;
-    font-size: 12px;
-}
-
-.nav-item.active {
-    color: #1a52ed;
-}
-
-.nav-item svg {
-    margin-bottom: 5px;
-}
 
 .success-message {
     background-color: #4CAF50;

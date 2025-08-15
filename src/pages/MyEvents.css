@@ -1,0 +1,376 @@
+/* My Events Page Styles */
+.my-events-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.my-events-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--event-banner-image, none);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.1;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+/* Header */
+.header {
+  background-color: #000;
+  padding: 15px 20px;
+  padding-top: calc(15px + env(safe-area-inset-top));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  max-width: 100%;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.help-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.help-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  background-color: #0052cc;
+  color: white;
+  position: sticky;
+  top: 60px;
+  z-index: 99;
+  width: 100%;
+  max-width: 100%;
+}
+
+.tab-button {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  font-weight: 500;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.tab-button.active {
+  border-bottom-color: white;
+}
+
+.tab-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Events Container */
+.events-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 120px);
+  width: 100%;
+  max-width: 100%;
+}
+
+.event-card {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 1px;
+  transition: transform 0.2s;
+  width: 100%;
+  max-width: 100%;
+}
+
+.event-card:hover {
+  transform: scale(1.02);
+}
+
+.event-background {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s;
+  max-width: 100%;
+}
+
+.event-card:hover .event-background {
+  transform: scale(1.05);
+}
+
+.event-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+  padding: 20px;
+  color: white;
+  width: 100%;
+  max-width: 100%;
+}
+
+.event-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.event-details {
+  font-size: 16px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.ticket-count-link {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.ticket-count-link:hover {
+  opacity: 0.8;
+}
+
+.ticket-count-link svg {
+  margin-right: 5px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: #666;
+}
+
+.empty-state p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 15px;
+    padding-top: calc(12px + env(safe-area-inset-top));
+  }
+  
+  .header h1 {
+    font-size: 18px;
+  }
+  
+  .event-title {
+    font-size: 20px;
+  }
+  
+  .event-details {
+    font-size: 14px;
+  }
+  
+  .event-overlay {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 12px;
+    padding-top: calc(10px + env(safe-area-inset-top));
+  }
+  
+  .header h1 {
+    font-size: 16px;
+  }
+  
+  .tab-button {
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  
+  .event-card {
+    height: 200px;
+  }
+  
+  .event-title {
+    font-size: 18px;
+  }
+  
+  .event-details {
+    font-size: 13px;
+  }
+  
+  .event-overlay {
+    padding: 12px;
+  }
+  
+  .ticket-count-link {
+    font-size: 13px;
+  }
+  
+  .empty-state {
+    padding: 30px 15px;
+  }
+  
+  .empty-state p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    padding: 8px 10px;
+    padding-top: calc(8px + env(safe-area-inset-top));
+  }
+  
+  .header h1 {
+    font-size: 14px;
+  }
+  
+  .tab-button {
+    padding: 10px 0;
+    font-size: 12px;
+  }
+  
+  .event-card {
+    height: 180px;
+  }
+  
+  .event-title {
+    font-size: 16px;
+  }
+  
+  .event-details {
+    font-size: 12px;
+  }
+  
+  .event-overlay {
+    padding: 10px;
+  }
+  
+  .ticket-count-link {
+    font-size: 12px;
+  }
+}
+
+/* Background overlay for better readability */
+.my-events-page::after {
+  content: "";
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.my-events-page > * {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ensure full width coverage */
+.my-events-page,
+.my-events-page * {
+  box-sizing: border-box;
+}
+
+/* Override any potential container constraints */
+.my-events-page {
+  min-width: 100vw;
+  width: 100vw;
+  max-width: 100vw;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Ensure all child elements also take full width */
+.my-events-page > div {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Force full width on all containers */
+.header,
+.tabs,
+.events-container {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Override Layout component constraints */
+.layout .main-content .my-events-page {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Ensure the page takes full viewport width */
+.my-events-page {
+  position: relative !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  min-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
