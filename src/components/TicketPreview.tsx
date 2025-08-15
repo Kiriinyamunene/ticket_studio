@@ -395,17 +395,17 @@ export const TicketPreview = ({ eventData, design, customColors, onSectionPositi
                 <span className="font-medium truncate">{formatTime(eventData.time)}</span>
               </div>
             </div>
-          </div>
-          <div className={`text-xs px-3 py-1 rounded-full font-medium ${
-            isLuxuryDesign 
-              ? 'bg-ticket-rose-gold/20 text-white border border-ticket-rose-gold/40' 
-              : design.id === 'concert' 
-                ? 'bg-white/20 text-white border border-white/30' 
+            <div className={`text-xs px-3 py-1 rounded-full font-medium ${
+              design.id === 'concert'
+                ? 'bg-white/20 text-white border border-white/30'
                 : 'bg-primary text-primary-foreground'
-          }`}>
-            {eventData.ticketType.toUpperCase()}
+            }`}>
+              {(eventData.ticketType || "").toUpperCase()}
+            </div>
+          </div>
         );
 
+      case 'category':
       case 'category':
         return (
           <div
@@ -422,15 +422,15 @@ export const TicketPreview = ({ eventData, design, customColors, onSectionPositi
               <GripVertical className="w-3 h-3 text-white/60" />
               <span className="text-xs font-medium text-white/80">{section.name}</span>
             </div>
-            <div 
+            <div
               className={`text-xs px-2 py-1 rounded-full font-medium text-center ${styles.category}`}
               style={isCustomDesign ? customStyles.category : {}}
             >
-            {eventData.category.toUpperCase()}
+              {(eventData.ticketType || "").toUpperCase()}
+            </div>
           </div>
-        </div>
         );
-
+      case 'seatInfo':
       case 'seatInfo':
         return eventData.seatSection || eventData.seatRow || eventData.seatNumber ? (
           <div
@@ -451,11 +451,10 @@ export const TicketPreview = ({ eventData, design, customColors, onSectionPositi
               <div className="text-xs font-medium tracking-wider text-white/70 mb-1">SEAT</div>
               <div className="font-mono font-bold text-sm">
                 {[eventData.seatSection, eventData.seatRow, eventData.seatNumber].filter(Boolean).join("-")}
+              </div>
+            </div>
           </div>
-          </div>
-        </div>
         ) : null;
-
       case 'price':
         return eventData.price ? (
           <div
